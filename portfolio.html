@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humberto Jordán — Desarrollador de Software</title>
+<meta name="description" content="Portafolio de Humberto Jordán, desarrollador de software backend especializado en Java y Spring Boot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#11141A;
+    --bg-panel:#1B212B;
+    --bg-panel-soft:#20262F;
+    --line:#2A323C;
+    --text:#ECE8E0;
+    --text-muted:#8B92A0;
+    --amber:#E0954D;
+    --amber-soft:rgba(224,149,77,0.14);
+    --teal:#4F8A82;
+    --teal-soft:rgba(79,138,130,0.14);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px;}
+
+  .section-inner{max-width:980px;margin:0 auto;padding:96px 32px;}
+  .section-eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    color:var(--teal);
+    margin-bottom:14px;
+  }
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:2.1rem;
+    margin-bottom:36px;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(17,20,26,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:980px;margin:0 auto;padding:18px 32px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .nav-logo{
+    font-family:var(--font-display);
+    font-weight:700;font-size:1.05rem;letter-spacing:0.02em;
+  }
+  .nav-logo-dot{color:var(--amber);}
+  .nav-links{display:flex;gap:28px;font-size:0.92rem;color:var(--text-muted);}
+  .nav-links a:hover{color:var(--text);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 32px 64px;border-bottom:1px solid var(--line);}
+  .hero-inner{
+    max-width:980px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--font-mono);font-size:0.85rem;
+    letter-spacing:0.08em;color:var(--amber);margin-bottom:18px;
+  }
+  .hero-name{
+    font-family:var(--font-display);font-weight:700;
+    font-size:3.6rem;line-height:1.04;letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  .hero-bio{color:var(--text-muted);font-size:1.04rem;max-width:480px;margin-bottom:32px;}
+  .hero-links{display:flex;gap:14px;}
+
+  .btn{
+    display:inline-block;padding:11px 22px;border-radius:3px;
+    font-size:0.92rem;font-weight:500;transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{background:var(--amber);color:#191308;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+
+  .hero-blueprint svg{width:100%;height:auto;}
+  .bp-line{fill:none;stroke:var(--teal);stroke-width:2;}
+  .bp-room-available{fill:var(--amber-soft);stroke:var(--amber);stroke-width:2;}
+  .bp-dot{fill:var(--amber);}
+  .bp-label{
+    font-family:var(--font-mono);font-size:9px;letter-spacing:0.04em;
+    fill:var(--amber);
+  }
+  .bp-label-dim{fill:var(--text-muted);}
+
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .bp-dot{animation:pulse 2.4s ease-in-out infinite;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:140px 1fr;gap:40px;align-items:start;}
+  .about-photo{
+    width:140px;height:140px;border-radius:4px;object-fit:cover;
+    border:1px solid var(--line);
+    filter:grayscale(0.25) sepia(0.12) hue-rotate(140deg) saturate(0.9);
+  }
+  .spec-row{
+    display:flex;justify-content:space-between;gap:16px;
+    padding:14px 0;border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .spec-row:last-child{border-bottom:none;}
+  .spec-row dt{font-family:var(--font-mono);color:var(--text-muted);font-size:0.82rem;letter-spacing:0.03em;}
+  .spec-row dd{color:var(--text);text-align:right;}
+
+  /* ---------- STACK / DIRECTORY ---------- */
+  .stack{background:var(--bg-panel);border-bottom:1px solid var(--line);}
+  .directory{border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .directory-row{
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    padding:20px 24px;border-bottom:1px solid var(--line);background:var(--bg-panel-soft);
+  }
+  .directory-row:last-child{border-bottom:none;}
+  .directory-level{font-family:var(--font-mono);font-size:0.88rem;color:var(--teal);}
+  .directory-items{color:var(--text);}
+  .directory-row-construction{
+    position:relative;
+    background:repeating-linear-gradient(135deg, var(--bg-panel-soft) 0px, var(--bg-panel-soft) 10px, rgba(224,149,77,0.06) 10px, rgba(224,149,77,0.06) 20px);
+  }
+  .directory-row-construction .directory-level{color:var(--amber);}
+
+  /* ---------- PROJECTS ---------- */
+  .project-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:6px;
+    padding:32px;margin-bottom:24px;
+  }
+  .project-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+  .badge{
+    font-family:var(--font-mono);font-size:0.74rem;letter-spacing:0.04em;
+    padding:5px 11px;border-radius:30px;display:inline-flex;align-items:center;gap:6px;
+  }
+  .badge-amber{background:var(--amber-soft);color:var(--amber);}
+  .badge-status{background:var(--teal-soft);color:var(--teal);}
+  .badge-construction{background:var(--amber-soft);color:var(--amber);margin-bottom:14px;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;}
+  .project-title{font-family:var(--font-display);font-weight:600;font-size:1.5rem;margin-bottom:6px;}
+  .project-address{font-family:var(--font-mono);font-size:0.82rem;color:var(--text-muted);margin-bottom:18px;}
+  .project-desc{color:var(--text-muted);margin-bottom:14px;}
+  .project-note{font-size:0.86rem;color:var(--text-muted);font-style:italic;margin-bottom:18px;border-left:2px solid var(--line);padding-left:12px;}
+  .project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+  .project-tags span{
+    font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);
+    border:1px solid var(--line);padding:4px 10px;border-radius:30px;
+  }
+  .project-link{color:var(--amber);font-weight:500;font-size:0.95rem;}
+  .project-link:hover{text-decoration:underline;}
+
+  .project-grid-secondary{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .project-card-secondary .project-title{font-size:1.2rem;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--bg-panel);}
+  .contact-text{color:var(--text-muted);max-width:520px;margin-bottom:32px;}
+  .contact-links{display:flex;gap:14px;margin-bottom:48px;}
+  .footer-meta{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .reveal{opacity:1;transform:none;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 760px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-blueprint{order:-1;max-width:320px;margin:0 auto;}
+    .hero-name{font-size:2.6rem;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo{width:96px;height:96px;}
+    .project-grid-secondary{grid-template-columns:1fr;}
+    .nav-links{gap:16px;font-size:0.84rem;}
+    .section-inner{padding:64px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">HJ<span class="nav-logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#stack">Stack</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Desarrollador de software</p>
+      <h1 class="hero-name">Humberto<br>Jordán</h1>
+      <p class="hero-bio">Desarrollo soluciones informáticas pensadas para personas reales: sistemas que resuelven problemas concretos, no solo código que funciona en una demo. Recién graduado, con foco en backend (Java · Spring Boot) y ampliando el stack hacia Python.</p>
+      <div class="hero-links">
+        <a href="https://github.com/HumbertoJordan" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+        <a href="https://www.linkedin.com/in/humberto-jordan-4b2371296/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-blueprint">
+      <svg id="blueprint" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano de planta estilizado">
+        <rect class="bp-line" x="20" y="20" width="360" height="280" />
+        <line class="bp-line" x1="190" y1="20" x2="190" y2="300" />
+        <line class="bp-line" x1="190" y1="160" x2="380" y2="160" />
+        <line class="bp-line" x1="20" y1="220" x2="190" y2="220" />
+        <rect class="bp-room-available" x="195" y="165" width="180" height="130" />
+        <circle class="bp-dot" cx="355" cy="180" r="5" />
+        <text class="bp-label" x="205" y="284">DISPONIBLE</text>
+        <text class="bp-label bp-label-dim" x="30" y="40">UNIDAD A</text>
+        <text class="bp-label bp-label-dim" x="30" y="240">UNIDAD B</text>
+        <text class="bp-label bp-label-dim" x="200" y="40">UNIDAD C</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="about reveal" id="sobre-mi">
+  <div class="section-inner">
+    <p class="section-eyebrow">// sobre mí</p>
+    <div class="about-grid">
+      <img class="about-photo" src="https://avatars.githubusercontent.com/u/207392783?v=4" alt="Foto de Humberto Jordán" loading="lazy">
+      <dl class="about-specs">
+        <div class="spec-row"><dt>Ubicación</dt><dd>Mendoza, Argentina</dd></div>
+        <div class="spec-row"><dt>Foco</dt><dd>Backend · Java / Spring Boot</dd></div>
+        <div class="spec-row"><dt>En aprendizaje</dt><dd>Python</dd></div>
+        <div class="spec-row"><dt>Disponibilidad</dt><dd>Full-time</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="stack reveal" id="stack">
+  <div class="section-inner">
+    <p class="section-eyebrow">// stack</p>
+    <h2 class="section-title">Directorio</h2>
+    <div class="directory">
+      <div class="directory-row">
+        <span class="directory-level">Nivel 01 — Backend</span>
+        <span class="directory-items">Java · Spring Boot · Spring Security · SQL</span>
+      </div>
+      <div class="directory-row">
+        <span class="directory-level">Nivel 01 — Frontend</span>
+        <span class="directory-items">JavaScript · Thymeleaf · HTML / CSS</span>
+      </div>
+      <div class="directory-row directory-row-construction">
+        <span class="directory-level">En obra</span>
+        <span class="directory-items">Python · FastAPI · SQLAlchemy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects reveal" id="proyectos">
+  <div class="section-inner">
+    <p class="section-eyebrow">// proyectos</p>
+    <h2 class="section-title">Lo que construí</h2>
+
+    <article class="project-card project-card-main">
+      <div class="project-top">
+        <span class="badge badge-amber">Proyecto principal</span>
+        <span class="badge badge-status"><span class="dot"></span>Disponible</span>
+      </div>
+      <h3 class="project-title">Sistema de Alquileres</h3>
+      <p class="project-address">github.com/HumbertoJordan/alquileres</p>
+      <p class="project-desc">Plataforma de gestión y reserva de alquileres de propiedades. Incluye autenticación y roles con Spring Security, panel de propiedades disponibles y vistas dinámicas con Thymeleaf.</p>
+      <p class="project-note">2ª versión — reescrita en Java / Spring Boot a partir de una primera versión hecha en PHP.</p>
+      <div class="project-tags">
+        <span>Java</span><span>Spring Boot</span><span>Thymeleaf</span><span>Spring Security</span>
+      </div>
+      <a href="https://github.com/HumbertoJordan/alquileres" target="_blank" rel="noopener" class="project-link">Ver repositorio →</a>
+    </article>
+
+    <div class="project-grid-secondary">
+      <article class="project-card project-card-secondary">
+        <span class="badge badge-construction">En aprendizaje</span>
+        <h3 class="project-title">Gestor de tareas</h3>
+        <p class="project-desc">Aplicación de consola para crear, listar y completar tareas. Primer proyecto explorando Python desde la base.</p>
+        <div class="project-tags"><span>Python</span></div>
+      </article>
+
+      <article class="project-card project-card-secondary">
+        <span class="badge badge-construction">En aprendizaje</span>
+        <h3 class="project-title">API de gastos</h3>
+        <p class="project-desc">API REST para registrar y consultar gastos personales. Endpoints CRUD, integración con SQLAlchemy y documentación interactiva con Swagger UI.</p>
+        <div class="project-tags"><span>Python</span><span>FastAPI</span><span>SQLAlchemy</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="contact reveal" id="contacto">
+  <div class="section-inner">
+    <p class="section-eyebrow">// contacto</p>
+    <h2 class="section-title">¿Trabajamos juntos?</h2>
+    <p class="contact-text">Estoy buscando mi primera oportunidad como desarrollador. Si tenés un proyecto o una posición donde pueda aportar, escribime.</p>
+    <div class="contact-links">
+      <a href="https://github.com/HumbertoJordan" target="_blank" rel="noopener" class="btn btn-primary">GitHub</a>
+      <a href="https://www.linkedin.com/in/humberto-jordan-4b2371296/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+    </div>
+    <p class="footer-meta">Hecho por Humberto Jordán</p>
+  </div>
+</footer>
+
+<script>
+  // Reduced motion check
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Blueprint draw-in animation
+  if (!reduceMotion) {
+    var lines = document.querySelectorAll('.bp-line');
+    lines.forEach(function(el, i){
+      try {
+        var len = el.getTotalLength();
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        el.style.transition = 'stroke-dashoffset 1s ease ' + (i * 0.18) + 's';
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            el.style.strokeDashoffset = 0;
+          });
+        });
+      } catch(e) {}
+    });
+  }
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el){ observer.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+</script>
+
+</body>
+</html>
